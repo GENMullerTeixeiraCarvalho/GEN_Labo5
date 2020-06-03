@@ -19,9 +19,6 @@ private:
     std::vector< Rental > _rentals;
 };
 
-inline Customer::
-Customer() {}
-
 inline void Customer::
 addRental( const Rental& arg ) { _rentals.push_back( arg ); }
 

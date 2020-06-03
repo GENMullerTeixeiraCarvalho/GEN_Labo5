@@ -57,4 +57,6 @@ string Customer::statement()
     return result.str();
 }
 
+Customer::Customer() {}
+
 Customer::Customer( const string& name ) : _name( name ) {}
