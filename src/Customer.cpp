@@ -1,4 +1,6 @@
 // Customer.cpp
+#include "Rental.h"
+#include <string>
 #include <sstream>
 #include <vector>
 #include "Customer.h"
@@ -54,3 +56,5 @@ string Customer::statement()
            << " frequent renter points";
     return result.str();
 }
+
+Customer::Customer( const string& name ) : _name( name ) {}

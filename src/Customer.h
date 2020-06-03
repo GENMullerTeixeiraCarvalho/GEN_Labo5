@@ -22,10 +22,6 @@ private:
 inline Customer::
 Customer() {}
 
-inline Customer::
-Customer( const std::string& name )
-        : _name( name ) {}
-
 inline void Customer::
 addRental( const Rental& arg ) { _rentals.push_back( arg ); }
 
