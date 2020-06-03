@@ -17,30 +17,11 @@ string Customer::statement()
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
     for (auto iter = _rentals.begin(); iter != _rentals.end(); ++iter ) {
-        double thisAmount = 0;
-
-        // determine amounts for each line
-        switch ( iter->getMovie().getPriceCode() ) {
-            case Movie::REGULAR:
-                thisAmount += 2;
-                if (iter->getDaysRented() > 2 )
-                    thisAmount += (iter->getDaysRented() - 2 ) * 1.5 ;
-                break;
-            case Movie::NEW_RELEASE:
-                thisAmount += iter->getDaysRented() * 3;
-                break;
-            case Movie::CHILDRENS:
-                thisAmount += 1.5;
-                if (iter->getDaysRented() > 3 )
-                    thisAmount += (iter->getDaysRented() - 3 ) * 1.5;
-                break;
-        }
+        std::shared_ptr<MoviePriceCode> priceCode = iter->getMovie().getPriceCode();
+        double thisAmount = priceCode->getAmount(iter->getDaysRented());
 
         // add frequent renter points
-        frequentRenterPoints++;
-        // add bonus for a two day new release rental
-        if ((iter->getMovie().getPriceCode() == Movie::NEW_RELEASE )
-            && iter->getDaysRented() > 1 ) frequentRenterPoints++;
+        frequentRenterPoints += priceCode->getFrequentRenterPoints(iter->getDaysRented());
 
         // show figures for this rental
         result << "\t" << iter->getMovie().getTitle() << "\t"
