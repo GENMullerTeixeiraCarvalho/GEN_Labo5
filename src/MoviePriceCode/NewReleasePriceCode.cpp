@@ -1,5 +1,7 @@
 #include "NewReleasePriceCode.h"
 
+std::shared_ptr<NewReleasePriceCode> NewReleasePriceCode::newReleasePriceCode = nullptr;
+
 double NewReleasePriceCode::getAmount(int nbRentedDays) {
     return nbRentedDays * 3;
 }
@@ -13,7 +15,7 @@ int NewReleasePriceCode::getFrequentRenterPoints(int nbRentedDays) {
 
 std::shared_ptr<NewReleasePriceCode> NewReleasePriceCode::getPriceCode() {
     if (newReleasePriceCode == nullptr)
-        newReleasePriceCode = std::shared_ptr<NewReleasePriceCode>();
+        newReleasePriceCode = std::shared_ptr<NewReleasePriceCode>(new NewReleasePriceCode());
 
     return newReleasePriceCode;
 }

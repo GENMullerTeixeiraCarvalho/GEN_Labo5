@@ -1,5 +1,7 @@
 #include "ChildrenPriceCode.h"
 
+std::shared_ptr<ChildrenPriceCode> ChildrenPriceCode::childrenPriceCode = nullptr;
+
 double ChildrenPriceCode::getAmount(int nbRentedDays) {
     double amount = 1.5;
     if (nbRentedDays > 3)
@@ -9,15 +11,12 @@ double ChildrenPriceCode::getAmount(int nbRentedDays) {
 }
 
 int ChildrenPriceCode::getFrequentRenterPoints(int nbRentedDays) {
-    if (nbRentedDays > 1)
-        return 2;
-
     return 1;
 }
 
 std::shared_ptr<ChildrenPriceCode> ChildrenPriceCode::getPriceCode() {
     if (childrenPriceCode == nullptr)
-        childrenPriceCode = std::shared_ptr<ChildrenPriceCode>();
+        childrenPriceCode = std::shared_ptr<ChildrenPriceCode>(new ChildrenPriceCode());
 
     return childrenPriceCode;
 }

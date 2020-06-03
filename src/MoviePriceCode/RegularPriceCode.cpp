@@ -1,5 +1,7 @@
 #include "RegularPriceCode.h"
 
+std::shared_ptr<RegularPriceCode> RegularPriceCode::regularPriceCode = nullptr;
+
 double RegularPriceCode::getAmount(int nbRentedDays) {
     double amount = 2;
     if (nbRentedDays > 2)
@@ -14,7 +16,7 @@ int RegularPriceCode::getFrequentRenterPoints(int nbRentedDays) {
 
 std::shared_ptr<RegularPriceCode> RegularPriceCode::getPriceCode() {
     if (regularPriceCode == nullptr)
-        regularPriceCode = std::shared_ptr<RegularPriceCode>();
+        regularPriceCode = std::shared_ptr<RegularPriceCode>(new RegularPriceCode());
 
     return regularPriceCode;
 }
