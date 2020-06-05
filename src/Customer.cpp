@@ -16,13 +16,13 @@ string Customer::statement()
     int frequentRenterPoints = 0;
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
-    for (auto iter = _rentals.begin(); iter != _rentals.end(); ++iter ) {
+    for (auto rental = _rentals.begin(); rental != _rentals.end(); ++rental ) {
         // add frequent renter points
-        frequentRenterPoints += iter->getFrequentRenterPoints();
+        frequentRenterPoints += rental->getFrequentRenterPoints();
 
         // show figures for this rental
-        result << "\t" << *iter << "\n";
-        totalAmount += iter->getAmount();
+        result << "\t" << *rental << "\n";
+        totalAmount += rental->getAmount();
     }
     // add footer lines
     result << "Amount owed is " << totalAmount << "\n";
