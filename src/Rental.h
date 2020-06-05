@@ -3,7 +3,10 @@
 #define RENTAL_H
 #include "Movie.h"
 
+#include <iostream>
+
 class Rental {
+    friend std::ostream& operator<<(std::ostream& os, const Rental& rental);
 public:
     Rental( const Movie& movie, int daysRented );
 
@@ -14,6 +17,8 @@ private:
     Movie _movie;
     int _daysRented;
 };
+
+std::ostream& operator<<(std::ostream& os, const Rental& rental);
 
 inline Rental::
 Rental( const Movie& movie, int daysRented )

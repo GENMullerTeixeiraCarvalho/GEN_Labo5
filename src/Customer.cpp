@@ -24,8 +24,7 @@ string Customer::statement()
         frequentRenterPoints += priceCode->getFrequentRenterPoints(iter->getDaysRented());
 
         // show figures for this rental
-        result << "\t" << iter->getMovie().getTitle() << "\t"
-               << thisAmount << "\n";
+        result << "\t" << *iter << "\n";
         totalAmount += thisAmount;
     }
     // add footer lines
