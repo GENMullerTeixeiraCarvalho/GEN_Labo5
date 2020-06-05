@@ -23,7 +23,7 @@ string Customer::statement()
 
         // show figures for this rental
         result << "\t" << *iter << "\n";
-        totalAmount += priceCode->getAmount(iter->getDaysRented());
+        totalAmount += iter->getAmount();
     }
     // add footer lines
     result << "Amount owed is " << totalAmount << "\n";
