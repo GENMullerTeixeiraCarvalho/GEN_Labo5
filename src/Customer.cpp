@@ -18,14 +18,12 @@ string Customer::statement()
     result << "Rental Record for " << getName() << "\n";
     for (auto iter = _rentals.begin(); iter != _rentals.end(); ++iter ) {
         std::shared_ptr<MoviePriceCode> priceCode = iter->getMovie().getPriceCode();
-        double thisAmount = priceCode->getAmount(iter->getDaysRented());
-
         // add frequent renter points
         frequentRenterPoints += priceCode->getFrequentRenterPoints(iter->getDaysRented());
 
         // show figures for this rental
         result << "\t" << *iter << "\n";
-        totalAmount += thisAmount;
+        totalAmount += priceCode->getAmount(iter->getDaysRented());
     }
     // add footer lines
     result << "Amount owed is " << totalAmount << "\n";
