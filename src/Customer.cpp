@@ -6,18 +6,19 @@
 #include "Customer.h"
 
 using std::ostringstream;
+using std::ostream;
 using std::vector;
 
 using namespace std;
 
+Customer::Customer() {}
+
+Customer::Customer( const string& name ) : _name( name ) {}
+
 string Customer::statement()
 {
     ostringstream result;
-    result << "Rental Record for " << getName() << "\n";
-    for (auto rental = _rentals.begin(); rental != _rentals.end(); ++rental ) {
-        // show figures for this rental
-        result << "\t" << *rental << "\n";
-    }
+    result << getRentalRecord();
     // add footer lines
     result << "Amount owed is " << getTotalAmount() << "\n";
     result << "You earned " << getTotalRenterPoints()
@@ -25,9 +26,16 @@ string Customer::statement()
     return result.str();
 }
 
-Customer::Customer() {}
+string Customer::getRentalRecord() const {
+    ostringstream rentalRecord;
 
-Customer::Customer( const string& name ) : _name( name ) {}
+    rentalRecord << "Rental Record for " << getName() << "\n";
+    for (const Rental& rental : _rentals) {
+        // show figures for this rental
+        rentalRecord << "\t" << rental << "\n";
+    }
+    return rentalRecord.str();
+}
 
 double Customer::getTotalAmount() const {
     double totalAmount = .0;
