@@ -17,9 +17,8 @@ string Customer::statement()
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
     for (auto iter = _rentals.begin(); iter != _rentals.end(); ++iter ) {
-        std::shared_ptr<MoviePriceCode> priceCode = iter->getMovie().getPriceCode();
         // add frequent renter points
-        frequentRenterPoints += priceCode->getFrequentRenterPoints(iter->getDaysRented());
+        frequentRenterPoints += iter->getFrequentRenterPoints();
 
         // show figures for this rental
         result << "\t" << *iter << "\n";

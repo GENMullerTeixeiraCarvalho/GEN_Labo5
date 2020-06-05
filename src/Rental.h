@@ -13,6 +13,7 @@ public:
     int getDaysRented() const;
     const Movie& getMovie() const;
     double getAmount() const;
+    int getFrequentRenterPoints() const;
 
 private:
     Movie _movie;
@@ -34,5 +35,10 @@ getMovie() const { return _movie; }
 
 inline double Rental::
 getAmount() const { return _movie.getPriceCode()->getAmount(_daysRented); }
+
+inline int Rental::
+getFrequentRenterPoints() const {
+    return _movie.getPriceCode()->getFrequentRenterPoints(_daysRented);
+}
 
 #endif // RENTAL_H
