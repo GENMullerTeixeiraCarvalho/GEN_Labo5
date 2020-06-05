@@ -12,19 +12,15 @@ using namespace std;
 
 string Customer::statement()
 {
-    int frequentRenterPoints = 0;
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
     for (auto rental = _rentals.begin(); rental != _rentals.end(); ++rental ) {
-        // add frequent renter points
-        frequentRenterPoints += rental->getFrequentRenterPoints();
-
         // show figures for this rental
         result << "\t" << *rental << "\n";
     }
     // add footer lines
     result << "Amount owed is " << getTotalAmount() << "\n";
-    result << "You earned " << frequentRenterPoints
+    result << "You earned " << getTotalRenterPoints()
            << " frequent renter points";
     return result.str();
 }
@@ -39,4 +35,12 @@ double Customer::getTotalAmount() const {
         totalAmount += rental.getAmount();
     }
     return totalAmount;
+}
+
+int Customer::getTotalRenterPoints() const {
+    int totalPoints = 0;
+    for (const Rental& rental : _rentals) {
+        totalPoints += rental.getFrequentRenterPoints();
+    }
+    return totalPoints;
 }
