@@ -37,7 +37,7 @@ endif()
 
 # Trivial example using gtest and gmock
 add_executable(GEN_Labo5 src/main.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp)
-add_executable(GEN_Labo5_tests test/CustomerTest.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp)
+add_executable(GEN_Labo5_tests test/CustomerTest.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp test/MoviePriceCodeTest.cpp)
 
 target_link_libraries(GEN_Labo5_tests gtest gmock_main)
 add_test(NAME example_test COMMAND GEN_Labo5_tests)
