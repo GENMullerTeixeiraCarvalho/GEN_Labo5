@@ -36,8 +36,8 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Trivial example using gtest and gmock
-add_executable(GEN_Labo5 src/main.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp src/Rental.cpp)
-add_executable(GEN_Labo5_tests test/CustomerTest.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp test/MoviePriceCodeTest.cpp src/Rental.cpp)
+add_executable(GEN_Labo5 src/Movie/RegularMovie.cpp src/main.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp src/Rental.cpp src/Movie/NewReleaseMovie.cpp src/Movie/NewReleaseMovie.h src/Movie/ChildrenMovie.cpp src/Movie/ChildrenMovie.h)
+add_executable(GEN_Labo5_tests src/Movie/RegularMovie.cpp test/CustomerTest.cpp src/Customer.cpp src/MoviePriceCode/RegularPriceCode.cpp src/MoviePriceCode/NewReleasePriceCode.cpp src/MoviePriceCode/ChildrenPriceCode.cpp test/MoviePriceCodeTest.cpp src/Rental.cpp src/Movie/NewReleaseMovie.cpp src/Movie/NewReleaseMovie.h src/Movie/ChildrenMovie.cpp src/Movie/ChildrenMovie.h)
 
 target_link_libraries(GEN_Labo5_tests gtest gmock_main)
 add_test(NAME example_test COMMAND GEN_Labo5_tests)

@@ -3,26 +3,26 @@
 #define MOVIE_H
 #include <string>
 #include <memory>
-#include "MoviePriceCode/MoviePriceCode.h"
-#include "MoviePriceCode/RegularPriceCode.h"
+#include "../MoviePriceCode/MoviePriceCode.h"
 
 class Movie {
 public:
-    Movie( const std::string& title, std::shared_ptr<MoviePriceCode> priceCode = RegularPriceCode::getPriceCode() );
-
     std::shared_ptr<MoviePriceCode> getPriceCode() const;
     void setPriceCode( std::shared_ptr<MoviePriceCode> arg );
     std::string getTitle() const;
+    Movie() = delete;
 
 private:
     std::string _title;
+
+protected:
+    Movie( const std::string& title, std::shared_ptr<MoviePriceCode> priceCode );
     std::shared_ptr<MoviePriceCode> _priceCode;
 };
 
 inline Movie::
 Movie( const std::string& title, std::shared_ptr<MoviePriceCode> priceCode )
-        : _title( title )
-        , _priceCode(std::move( priceCode ))
+        : _title( title ), _priceCode(std::move(priceCode))
 {}
 
 inline std::shared_ptr<MoviePriceCode> Movie::
