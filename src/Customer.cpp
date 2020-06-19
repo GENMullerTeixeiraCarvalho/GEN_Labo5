@@ -32,7 +32,7 @@ string Customer::getRentalRecord() const {
     rentalRecord << "Rental Record for " << getName() << "\n";
     for (const std::shared_ptr<Rental>& rental : _rentals) {
         // show figures for this rental
-        rentalRecord << "\t" << *rental << "\n";
+        rentalRecord << "\t" << rental->getTitleMovie() << "\t" << rental->getAmount() << "\n";
     }
     return rentalRecord.str();
 }
