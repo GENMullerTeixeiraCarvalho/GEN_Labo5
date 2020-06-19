@@ -31,7 +31,7 @@ TEST(Rental, getAmountShouldWork){
     EXPECT_CALL(*ptrMovieMock, getPriceCode()).WillRepeatedly(Return(ptrMoviePriceCodeMock));
     EXPECT_CALL(*ptrMoviePriceCodeMock, getAmount(nbRentedDays)).WillRepeatedly(Return(nbRentedDays));
 
-    Rental rental = Rental(*ptrMovieMock, nbRentedDays);
+    Rental rental = Rental(ptrMovieMock, nbRentedDays);
 
     ASSERT_EQ(rental.getAmount(), nbRentedDays);
 }
@@ -44,7 +44,7 @@ TEST(Rental, getFrequentPointsShouldWork){
     EXPECT_CALL(*ptrMovieMock, getPriceCode()).WillRepeatedly(Return(ptrMoviePriceCodeMock));
     EXPECT_CALL(*ptrMoviePriceCodeMock, getFrequentRenterPoints(nbRentedDays)).WillRepeatedly(Return(1));
 
-    Rental rental = Rental(*ptrMovieMock, nbRentedDays);
+    Rental rental = Rental(ptrMovieMock, nbRentedDays);
 
     ASSERT_EQ(rental.getFrequentRenterPoints(), 1);
 }
