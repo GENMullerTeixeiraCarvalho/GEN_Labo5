@@ -30,25 +30,25 @@ string Customer::getRentalRecord() const {
     ostringstream rentalRecord;
 
     rentalRecord << "Rental Record for " << getName() << "\n";
-    for (const Rental& rental : _rentals) {
+    for (const std::shared_ptr<Rental>& rental : _rentals) {
         // show figures for this rental
-        rentalRecord << "\t" << rental << "\n";
+        rentalRecord << "\t" << *rental << "\n";
     }
     return rentalRecord.str();
 }
 
 double Customer::getTotalAmount() const {
     double totalAmount = .0;
-    for (const Rental& rental : _rentals) {
-        totalAmount += rental.getAmount();
+    for (const std::shared_ptr<Rental>& rental : _rentals) {
+        totalAmount += rental->getAmount();
     }
     return totalAmount;
 }
 
 int Customer::getTotalRenterPoints() const {
     int totalPoints = 0;
-    for (const Rental& rental : _rentals) {
-        totalPoints += rental.getFrequentRenterPoints();
+    for (const std::shared_ptr<Rental>& rental : _rentals) {
+        totalPoints += rental->getFrequentRenterPoints();
     }
     return totalPoints;
 }

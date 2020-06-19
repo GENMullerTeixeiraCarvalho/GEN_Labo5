@@ -8,9 +8,9 @@
 
 TEST(Customer, StatementShouldWork) {
     Customer customer("Olivier");
-    customer.addRental( Rental( std::make_shared<Movie>("Karate Kid", RegularPriceCode::getPriceCode()), 7)));
-    customer.addRental( Rental( std::make_shared<Movie>("Avengers: Endgame", NewReleasePriceCode::getPriceCode()), 5));
-    customer.addRental( Rental( std::make_shared<Movie>("Snow White", ChildrenPriceCode::getPriceCode()), 3 ));
+    customer.addRental( std::make_shared<Rental>( std::make_shared<Movie>("Karate Kid", RegularPriceCode::getPriceCode()), 7));
+    customer.addRental( std::make_shared<Rental>( std::make_shared<Movie>("Avengers: Endgame", NewReleasePriceCode::getPriceCode()), 5));
+    customer.addRental( std::make_shared<Rental>( std::make_shared<Movie>("Snow White", ChildrenPriceCode::getPriceCode()), 3 ));
 
     const std::string EXPECTED_RES = "Rental Record for Olivier\n"
                                 "\tKarate Kid\t9.5\n"
