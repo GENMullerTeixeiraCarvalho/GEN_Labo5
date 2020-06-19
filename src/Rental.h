@@ -9,9 +9,7 @@ class Rental {
     friend std::ostream& operator<<(std::ostream& os, const Rental& rental);
 public:
     Rental( std::shared_ptr<Movie> movie, int daysRented );
-
-    int getDaysRented() const;
-    const std::shared_ptr<Movie> getMovie() const;
+    
     double getAmount() const;
     int getFrequentRenterPoints() const;
 
@@ -21,12 +19,6 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const Rental& rental);
-
-inline int Rental::
-getDaysRented() const { return _daysRented; }
-
-inline const std::shared_ptr<Movie> Rental::
-getMovie() const { return _movie; }
 
 inline double Rental::
 getAmount() const { return _movie->getPriceCode()->getAmount(_daysRented); }
