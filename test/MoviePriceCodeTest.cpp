@@ -1,13 +1,9 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 
 #include "../src/MoviePriceCode/MoviePriceCode.h"
 #include "../src/MoviePriceCode/ChildrenPriceCode.h"
 #include "../src/MoviePriceCode/NewReleasePriceCode.h"
 #include "../src/MoviePriceCode/RegularPriceCode.h"
-
-//virtual double getAmount(int nbRentedDays) = 0;
-//virtual int getFrequentRenterPoints(int nbRentedDays) = 0;
 
 TEST(ChildrenPriceCode, getAmountShouldWork) {
     std::shared_ptr<MoviePriceCode> priceCode = ChildrenPriceCode::getPriceCode();
