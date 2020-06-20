@@ -9,9 +9,9 @@ class Rental {
 public:
     Rental( std::shared_ptr<Movie> movie, int daysRented );
 
-    double getAmount() const;
-    int getFrequentRenterPoints() const;
-    std::string getTitleMovie() const;
+    virtual double getAmount() const;
+    virtual int getFrequentRenterPoints() const;
+    virtual std::string getTitleMovie() const;
 
 private:
     std::shared_ptr<Movie> _movie;
