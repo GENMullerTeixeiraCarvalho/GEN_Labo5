@@ -6,7 +6,7 @@
 
 using ::testing::Return;
 
-class RentalMock : public Rental{
+class RentalMock : public Rental {
 public:
     explicit RentalMock( int daysRented ) : Rental(nullptr, daysRented) {}
     MOCK_METHOD(double, getAmount, (), (const));
@@ -20,6 +20,8 @@ TEST(Customer, getNameShouldWork) {
     EXPECT_EQ(customer.getName(), "Olivier");
 }
 
+// La fonction addRental n'est pas directement testée car elle est testée indirectement par les test
+// getTotalAmountShouldWork, getTotalRenterPointsShouldWork et statementShouldWork
 TEST(Customer, getTotalAmountShouldWork) {
     Customer customer("Olivier");
     EXPECT_EQ(customer.getTotalAmount(), 0);
@@ -54,7 +56,7 @@ TEST(Customer, getTotalRenterPointsShouldWork) {
     EXPECT_EQ(customer.getTotalRenterPoints(), 3);
 }
 
-TEST(Customer, StatementShouldWork) {
+TEST(Customer, statementShouldWork) {
     Customer customer("Olivier");
     std::shared_ptr<RentalMock> ptrRental1 = std::make_shared<RentalMock>(7);
     std::shared_ptr<RentalMock> ptrRental2 = std::make_shared<RentalMock>(5);
