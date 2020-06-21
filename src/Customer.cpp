@@ -11,7 +11,7 @@ using std::vector;
 
 using namespace std;
 
-Customer::Customer() {}
+Customer::Customer() = default;
 
 Customer::Customer( const string& name ) : _name( name ) {}
 

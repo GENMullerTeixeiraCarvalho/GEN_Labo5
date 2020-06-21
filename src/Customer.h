@@ -10,7 +10,7 @@ public:
     Customer();
     explicit Customer( const std::string& name );
 
-    void addRental( std::shared_ptr<Rental> arg );
+    void addRental( std::shared_ptr<Rental> rental );
     std::string getName() const;
     std::string statement();
     double getTotalAmount() const;
@@ -24,7 +24,7 @@ private:
 };
 
 inline void Customer::
-addRental( const std::shared_ptr<Rental> arg ) { _rentals.push_back( arg ); }
+addRental( const std::shared_ptr<Rental> rental ) { _rentals.push_back( rental ); }
 
 inline std::string Customer::
 getName() const { return _name; }
