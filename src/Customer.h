@@ -10,7 +10,7 @@ public:
     Customer();
     explicit Customer( const std::string& name );
 
-    void addRental( const Rental& arg );
+    void addRental( std::shared_ptr<Rental> arg );
     std::string getName() const;
     std::string statement();
     double getTotalAmount() const;
@@ -18,13 +18,13 @@ public:
 
 private:
     std::string _name;
-    std::vector< Rental > _rentals;
+    std::vector< std::shared_ptr<Rental> > _rentals;
 
     std::string getRentalRecord() const;
 };
 
 inline void Customer::
-addRental( const Rental& arg ) { _rentals.push_back( arg ); }
+addRental( const std::shared_ptr<Rental> arg ) { _rentals.push_back( arg ); }
 
 inline std::string Customer::
 getName() const { return _name; }

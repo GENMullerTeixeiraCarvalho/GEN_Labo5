@@ -1,10 +1,7 @@
 #include "Rental.h"
 
-std::ostream& operator<<(std::ostream& os, const Rental& rental) {
-    os << rental._movie.getTitle() << "\t" << rental.getAmount();
-    return os;
-}
+#include <utility>
 
-Rental::Rental( const Movie& movie, int daysRented )
-        : _movie( movie )
+Rental::Rental( std::shared_ptr<Movie> movie, int daysRented )
+        : _movie(std::move( movie ))
         , _daysRented( daysRented ) {}
