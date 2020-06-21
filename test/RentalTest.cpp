@@ -17,7 +17,7 @@ public:
 
 class MovieMock : public Movie{
 public:
-    MovieMock( const std::string& title, std::shared_ptr<MoviePriceCode> priceCode ) : Movie(title, priceCode) {}
+    MovieMock( const std::string& title, std::shared_ptr<MoviePriceCode> priceCode ) : Movie(title, std::move(priceCode)) {}
     MOCK_METHOD(std::string, getTitle, (), (const));
     MOCK_METHOD(void, setPriceCode, (std::shared_ptr<MoviePriceCode> arg));
     MOCK_METHOD(std::shared_ptr<MoviePriceCode>, getPriceCode, (), (const));
